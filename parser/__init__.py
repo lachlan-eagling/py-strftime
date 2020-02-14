@@ -69,6 +69,10 @@ def parse_date_str(dt: str) -> str:
     """
     # Lots of work to do here to get an optimal and efficient solution.
     # I have no doubt there are buckets of edge cases that fail at the moment.
+
+    # Look at replacing this with a bunch of pre-compiled regexes like (\d{1,2}):(\d{1,2}):(\d{1,2})
+    # would need to profile this to see performance gain/regression though.
+    initial_value = dt
     for long_month in LONG_MONTHS:
         if long_month in dt:
             dt = dt.replace(long_month, "%B")
@@ -110,4 +114,6 @@ def parse_date_str(dt: str) -> str:
     year_results = YEAR_FOUR_DIGIT_REGEX.findall(dt)
     if len(year_results) == 1:
         dt = dt.replace(year_results[0], "%Y")
-    return dt
+    if initial_value == dt:
+        return "Enter a valid date."
+    return f".strftime('{dt}')"
