@@ -1,0 +1,48 @@
+.subheading {
+    font-size: 22px;
+}
+
+.header {
+    margin-top: 18rem;
+    text-align: center;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.content {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 8rem;
+    text-align: center;
+}
+
+/* TODO: Choose new fonts */
+input[type="text"] {
+    border-radius: 6px;
+    padding: 24px;
+    /* font-family: "futura-pt", "Trebuchet MS", Helvetica, Arial, sans-serif; */
+    font-size: 32px;
+    font-weight: 500;
+    outline: none;
+    width: 590px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+
+p#label {
+    text-align: center;
+    /* font-family: "futura-pt", "Trebuchet MS", Helvetica, Arial, sans-serif; */
+    font-weight: 500;
+    line-height: 1.41;
+    margin-bottom: 6px;
+    color: #777;
+    font-size: 30px;
+    white-space: nowrap;
+}
+  

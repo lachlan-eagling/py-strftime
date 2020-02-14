@@ -1,0 +1,55 @@
+<html>
+
+<!-- TODO: Apply styling and make it look "nice". Just want to get something working together first.-->
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/strftime.js') }}"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158384712-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158384712-1');
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <div class="row">
+                <h1>
+                    py-strftime()
+                </h1>
+                <span>
+                    A Python <a href="https://docs.python.org/3/library/datetime.html#datetime.date.strftime"
+                        target="_blank">strftime</a> format generator
+                </span>
+            </div>
+        </section>
+        <section class="content">
+
+            <input autocomplete='off' id='fmt-input' placeholder='e.g. {{ now_date }}' type='text'>
+
+            <pre>
+                <p id='label'>
+                    Enter a date above
+                </p>
+            </pre>
+        </section>
+        <section class="footer">
+            <div class="row">
+                <p><a href="https://twitter.com/LachlanEagling" target="_blank">@LachlanEagling</a></p>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
