@@ -18,6 +18,7 @@ $(function () {
             var msg = "Enter a date above";
             if (current != msg) {
                 $('#label').hide().text(msg).fadeIn('fast');
+                $('#copyButton').hide().fadeOut('fast');
             }
 
         } else {
@@ -29,6 +30,7 @@ $(function () {
                 },
                 error: function () {
                     var msg = "Enter a valid date";
+                    $('#copyButton').hide().fadeOut('fast');
                     if (current != msg) {
                         $('#label').hide().text("Enter a valid date").fadeIn('fast');
                     }
@@ -36,6 +38,7 @@ $(function () {
                 success: function (data) {
                     if (current != data.message) {
                         $('#label').hide().html(data.message).fadeIn('fast');
+                        $('#copyButton').show().fadeIn('fast');
                     }
                 },
                 dataType: 'json'
@@ -43,3 +46,14 @@ $(function () {
         }
     }
 });
+
+function copyToClipboard() {
+    var text = document.getElementById("label");
+    var $temp = $("<input>");
+
+    $("body").append($temp);
+    $temp.val($(text).text()).select();
+    document.execCommand("copy");
+
+    $temp.remove();
+}

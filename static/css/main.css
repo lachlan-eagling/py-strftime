@@ -44,5 +44,6 @@ p#label {
     color: #777;
     font-size: 30px;
     white-space: nowrap;
+    user-select: all;
 }
   

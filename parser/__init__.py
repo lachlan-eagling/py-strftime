@@ -115,5 +115,5 @@ def parse_date_str(dt: str) -> str:
     if len(year_results) == 1:
         dt = dt.replace(year_results[0], "%Y")
     if initial_value == dt:
-        return "Enter a valid date."
+        return None
     return f".strftime('{dt}')"

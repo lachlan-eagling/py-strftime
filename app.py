@@ -18,4 +18,7 @@ def index():
 @app.route("/format", methods=["POST"])
 def format():
     dt = request.form["dateFormat"]
-    return jsonify({"message": parse_date_str(dt)})
+    formatted = parse_date_str(dt)
+    if not formatted:
+        return "", 400
+    return jsonify({"message": formatted})
