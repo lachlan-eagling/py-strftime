@@ -1,5 +1,4 @@
-pystrftime
-#### A Python `strftime()` format code generator
+# [pystrftime](https://www.pystrftime.com)
 
 A web based utility to generate the required format codes from a valid date string.
 
