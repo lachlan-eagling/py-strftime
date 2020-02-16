@@ -46,4 +46,26 @@ p#label {
     white-space: nowrap;
     user-select: all;
 }
+
+.social {
+    font-size: 32px;
+    color: black;
+}
+
+.social a:link {
+    color: black;
+}
+
+.social a:visited {
+    color: black;
+}
+
+.social a:hover {
+    color: black;
+}
+
+.social a:active {
+    color: black;
+}
+
   
