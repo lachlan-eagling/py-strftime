@@ -11,6 +11,22 @@
     user-select: none; /* Standard */
 }
 
+.header a:link {
+    color: #1e00b3;
+}
+
+.header a:visited {
+    color: #1e00b3;
+}
+
+.header a:hover {
+    color: #1e00b3;
+}
+
+.header a:active {
+    color: #1e00b3;
+}
+
 .content {
     margin-top: 5rem;
     text-align: center;
@@ -37,7 +53,7 @@ p#label {
     font-weight: 500;
     line-height: 1.41;
     margin-top: 1%;
-    color: #777;
+    color: rgb(92, 91, 91);
     font-size: 30px;
     font-size: 5vw;
     white-space: nowrap;
