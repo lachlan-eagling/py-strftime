@@ -1,1 +1,14 @@
-flask>=1.1.1,<2
+astroid==2.3.3
+Click==7.0
+Flask==1.1.1
+isort==4.3.21
+itsdangerous==1.1.0
+Jinja2==2.10.3
+lazy-object-proxy==1.4.3
+MarkupSafe==1.1.1
+mccabe==0.6.1
+pylint==2.4.4
+six==1.14.0
+uWSGI==2.0.18
+Werkzeug==0.16.0
+wrapt==1.11.2
