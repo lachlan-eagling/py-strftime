@@ -3,7 +3,7 @@
 }
 
 .header {
-    margin-top: 18rem;
+    margin-top: 10%;
     text-align: center;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -17,32 +17,29 @@
 }
 
 .footer {
-    margin-top: 8rem;
+    margin-top: 10%;
     text-align: center;
 }
 
-/* TODO: Choose new fonts */
 input[type="text"] {
-    border-radius: 6px;
-    padding: 24px;
-    /* font-family: "futura-pt", "Trebuchet MS", Helvetica, Arial, sans-serif; */
-    font-size: 32px;
+    border-radius: 8px; 
+    padding: 35px;
+    font-size: 3vw;
     font-weight: 500;
     outline: none;
-    width: 590px;
-    margin-bottom: 2rem;
+    margin-top: 6%;
     text-align: center;
   }
 
 
 p#label {
     text-align: center;
-    /* font-family: "futura-pt", "Trebuchet MS", Helvetica, Arial, sans-serif; */
     font-weight: 500;
     line-height: 1.41;
-    margin-bottom: 6px;
+    margin-top: 1%;
     color: #777;
     font-size: 30px;
+    font-size: 5vw;
     white-space: nowrap;
     user-select: all;
 }
