@@ -45,3 +45,8 @@ class TestParser(TestCase):
         input_format = "19:11:23 PM"
         result = parse_date_str(input_format)
         self.assertEqual("%H:%M:%S %p", result)
+
+    def test_parser__iso8601(self):
+        input_format = "2020-02-23T18:47:17+11:00"
+        result = parse_date_str(input_format)
+        self.assertEqual("%Y-%m-%dT%H:%M:%S%Z", result)

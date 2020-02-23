@@ -5,6 +5,9 @@ import datetime
 
 TWO_DIGIT_REGEX = re.compile("(\\d{1,2})\\D")
 YEAR_FOUR_DIGIT_REGEX = re.compile("\\d{4}")
+ISO_8601_RE = re.compile("(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+,-]\\d{2}:\\d{2})")
+
+ISO_8601_FORMAT = "%Y-%m-%dT%H:%M:%S%Z"  # 2012-03-29T10:05:45-06:00
 
 SHORT_MONTHS = [
     "Jan",
@@ -61,6 +64,12 @@ AM_PM = [
     "PM",
 ]
 
+def check_known_formats(dt: str) -> str:
+    iso8601 = ISO_8601_RE.findall(dt)
+    if len(iso8601) == 1:
+        return ISO_8601_FORMAT
+    return dt
+
 
 def parse_date_str(dt: str) -> str:
     """
@@ -72,6 +81,10 @@ def parse_date_str(dt: str) -> str:
 
     # Look at replacing this with a bunch of pre-compiled regexes like (\d{1,2}):(\d{1,2}):(\d{1,2})
     # would need to profile this to see performance gain/regression though.
+
+    if (known := check_known_formats(dt)):
+        return known
+
     initial_value = dt
     for long_month in LONG_MONTHS:
         if long_month in dt:
