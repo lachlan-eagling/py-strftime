@@ -21,4 +21,4 @@ def format():
     formatted = parse_date_str(dt)
     if not formatted:
         return "", 400
-    return jsonify({"message": formatted})
+    return jsonify({"message": f".strftime('{formatted}')"})

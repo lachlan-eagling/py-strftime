@@ -68,7 +68,7 @@ def check_known_formats(dt: str) -> str:
     iso8601 = ISO_8601_RE.findall(dt)
     if len(iso8601) == 1:
         return ISO_8601_FORMAT
-    return dt
+    return None
 
 
 def parse_date_str(dt: str) -> str:
@@ -129,4 +129,4 @@ def parse_date_str(dt: str) -> str:
         dt = dt.replace(year_results[0], "%Y")
     if initial_value == dt:
         return None
-    return f".strftime('{dt}')"
+    return dt
