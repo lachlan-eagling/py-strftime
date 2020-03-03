@@ -81,4 +81,8 @@ p#label {
     color: black;
 }
 
-  
+
+#coffeeBtn{
+    zoom: 0.8 !important;
+    -moz-transform: scale(0.8) !important;
+}
