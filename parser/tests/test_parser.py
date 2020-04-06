@@ -50,3 +50,8 @@ class TestParser(TestCase):
         input_format = "2020-02-23T18:47:17+11:00"
         result = parse_date_str(input_format)
         self.assertEqual("%Y-%m-%dT%H:%M:%S%Z", result)
+
+    def test_parser__YYYY_dash_mm_dash_dd(self):
+        input_format = "2020-02-21"
+        result = parse_date_str(input_format)
+        self.assertEqual("%Y-%m-%d", result)

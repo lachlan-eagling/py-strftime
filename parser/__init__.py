@@ -3,7 +3,7 @@ import re
 import datetime
 
 
-TWO_DIGIT_REGEX = re.compile("(\\d{1,2})\\D")
+TWO_DIGIT_REGEX = re.compile("(\\d{1,2})")
 YEAR_FOUR_DIGIT_REGEX = re.compile("\\d{4}")
 ISO_8601_RE = re.compile("(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+,-]\\d{2}:\\d{2})")
 
@@ -86,6 +86,11 @@ def parse_date_str(dt: str) -> str:
         return known
 
     initial_value = dt
+
+    year_results = YEAR_FOUR_DIGIT_REGEX.findall(dt)
+    if len(year_results) == 1:
+        dt = dt.replace(year_results[0], "%Y")
+
     for long_month in LONG_MONTHS:
         if long_month in dt:
             dt = dt.replace(long_month, "%B")
@@ -104,6 +109,7 @@ def parse_date_str(dt: str) -> str:
     for ampm in AM_PM:
         if ampm in dt:
             dt = dt.replace(ampm, "%p")
+
     two_digit_results = TWO_DIGIT_REGEX.findall(dt)
     if len(two_digit_results) == 3:
         if int(two_digit_results[0]) in range(0, 23) and int(two_digit_results[1]) in range(0, 59) and int(two_digit_results[2]) in range(0, 59):
@@ -124,9 +130,8 @@ def parse_date_str(dt: str) -> str:
         if int(two_digit_results[0]) in range(1, 31):
             dt = dt.replace(two_digit_results[0], "%d")
 
-    year_results = YEAR_FOUR_DIGIT_REGEX.findall(dt)
-    if len(year_results) == 1:
-        dt = dt.replace(year_results[0], "%Y")
+
+
     if initial_value == dt:
         return None
     return dt
