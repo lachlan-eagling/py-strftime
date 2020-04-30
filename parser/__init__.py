@@ -103,32 +103,31 @@ def parse_date_str(dt: str) -> str:
     for short_day in SHORT_DAYS:
         if short_day in dt:
             dt = dt.replace(short_day, "%a")
-    for short_month in SHORT_MONTHS:
-        if short_month in dt:
-            dt = dt.replace(short_month, "%b")
     for ampm in AM_PM:
         if ampm in dt:
             dt = dt.replace(ampm, "%p")
 
     two_digit_results = TWO_DIGIT_REGEX.findall(dt)
     if len(two_digit_results) == 3:
-        if int(two_digit_results[0]) in range(0, 23) and int(two_digit_results[1]) in range(0, 59) and int(two_digit_results[2]) in range(0, 59):
-            if int(two_digit_results[0]) in range(13, 23):
-                dt = dt.replace(two_digit_results[0], "%H")
-            if int(two_digit_results[0]) in range(0, 12):
-                dt = dt.replace(two_digit_results[0], "%I")
-            dt = dt.replace(two_digit_results[1], "%M")
-            dt = dt.replace(two_digit_results[2], "%S")
+        if int(two_digit_results[0]) in range(0, 24) and int(two_digit_results[1]) in range(0, 60) and int(two_digit_results[2]) in range(0, 60):
+            if int(two_digit_results[0]) in range(13, 24):
+                dt = dt.replace(two_digit_results[0], "%H", 1)
+            elif int(two_digit_results[0]) in range(1, 13):
+                dt = dt.replace(two_digit_results[0], "%I", 1)
+            else:
+                dt = dt.replace(two_digit_results[0], "%H", 1)
+            dt = dt.replace(two_digit_results[1], "%M", 1)
+            dt = dt.replace(two_digit_results[2], "%S", 1)
     if len(two_digit_results) == 2:
-        if int(two_digit_results[0]) in range(1, 12) and int(two_digit_results[1]) in range(1, 31):
-            dt = dt.replace(two_digit_results[0], "%m")
-            dt = dt.replace(two_digit_results[1], "%d")
-        if int(two_digit_results[0]) in range(1, 31) and int(two_digit_results[1]) in range(1, 12):
-            dt = dt.replace(two_digit_results[0], "%d")
-            dt = dt.replace(two_digit_results[1], "%m")
+        if int(two_digit_results[0]) in range(1, 13) and int(two_digit_results[1]) in range(1, 32):
+            dt = dt.replace(two_digit_results[0], "%m", 1)
+            dt = dt.replace(two_digit_results[1], "%d", 1)
+        if int(two_digit_results[0]) in range(1, 32) and int(two_digit_results[1]) in range(1, 13):
+            dt = dt.replace(two_digit_results[0], "%d", 1)
+            dt = dt.replace(two_digit_results[1], "%m", 1)
     if len(two_digit_results) == 1:
-        if int(two_digit_results[0]) in range(1, 31):
-            dt = dt.replace(two_digit_results[0], "%d")
+        if int(two_digit_results[0]) in range(1, 32):
+            dt = dt.replace(two_digit_results[0], "%d", 1)
 
 
 
