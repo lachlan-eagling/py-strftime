@@ -21,8 +21,18 @@ class TestParser(TestCase):
         result = parse_date_str(input_format)
         self.assertEqual("%d %b %Y", result)
 
+    def test_parser__ddShortMoNtHyyyy_space_delim(self):
+        input_format = "21 FeB 2020"
+        result = parse_date_str(input_format)
+        self.assertEqual("%d %b %Y", result)
+
     def test_parser__ddLongMonthyyyy_space_delim(self):
         input_format = "21 February 2020"
+        result = parse_date_str(input_format)
+        self.assertEqual("%d %B %Y", result)
+
+    def test_parser__ddLongMoNtHyyyy_space_delim(self):
+        input_format = "21 FeBrUaRy 2020"
         result = parse_date_str(input_format)
         self.assertEqual("%d %B %Y", result)
 
@@ -33,6 +43,16 @@ class TestParser(TestCase):
 
     def test_parser__shortDayddthShortMonthYYYY(self):
         input_format = "Mon 9th Jan 2020"
+        result = parse_date_str(input_format)
+        self.assertEqual("%a %dth %b %Y", result)
+
+    def test_parser__shortDayddthShortMONTHYYYY(self):
+        input_format = "Mon 9th JAN 2020"
+        result = parse_date_str(input_format)
+        self.assertEqual("%a %dth %b %Y", result)
+
+    def test_parser__shortDAYddthShortMONTHYYYY(self):
+        input_format = "MON 9th JAN 2020"
         result = parse_date_str(input_format)
         self.assertEqual("%a %dth %b %Y", result)
 

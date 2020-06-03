@@ -92,17 +92,21 @@ def parse_date_str(dt: str) -> str:
         dt = dt.replace(year_results[0], "%Y")
 
     for long_month in LONG_MONTHS:
-        if long_month in dt:
-            dt = dt.replace(long_month, "%B")
+        insensitive_long_month = re.compile(re.escape(long_month), re.IGNORECASE)
+        if re.search(insensitive_long_month, dt):
+            dt = insensitive_long_month.sub("%B", dt)
     for short_month in SHORT_MONTHS:
-        if short_month in dt:
-            dt = dt.replace(short_month, "%b")
+        insensitive_short_month = re.compile(re.escape(short_month), re.IGNORECASE)
+        if re.search(insensitive_short_month, dt):
+            dt = insensitive_short_month.sub("%b", dt)
     for long_day in LONG_DAYS:
-        if long_day in dt:
-            dt = dt.replace(long_day, "%A")
+        insensitive_long_day = re.compile(re.escape(long_day), re.IGNORECASE)
+        if re.search(insensitive_long_day, dt):
+            dt = insensitive_long_day.sub("%A", dt)
     for short_day in SHORT_DAYS:
-        if short_day in dt:
-            dt = dt.replace(short_day, "%a")
+        insensitive_short_day = re.compile(re.escape(short_day), re.IGNORECASE)
+        if re.search(insensitive_short_day, dt):
+            dt = insensitive_short_day.sub("%a", dt)
     for ampm in AM_PM:
         if ampm in dt:
             dt = dt.replace(ampm, "%p")
